@@ -1,0 +1,32 @@
+{
+	"FileVersion": 3,
+	"Version": 0,
+	"VersionName": "0.2.1",
+	"SemVersion": "0.2.1",
+	"FriendlyName": "Modular Connections",
+	"Description": "Attach additional input and output ports to buildings at positions of your choosing.",
+	"Category": "Modding",
+	"CreatedBy": "Nog",
+	"CreatedByURL": "https://ficsit.app/mod/4CJN3aP3Fpu25b",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "http://discord.gg/zqp6U7Y7Nu",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "Modular_Connections",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "SML",
+			"SemVersion": "^3.0.0",
+			"Enabled": true
+		}
+	]
+}
