@@ -252,7 +252,12 @@ void AModularConnectionBuildable::ConnectToMachine()
 				SetupConveyor(CachedBelt, UModularConnectionBPLib::GetDefaultInventoryForDirection(AttachedBuilding,bIsOut), IndexOverride);
 			}
 		}
-		
+		AFGBuildableSubsystem* Subsystem = AFGBuildableSubsystem::Get(GetWorld());
+		if (Subsystem)
+		{
+			AFGBuildableSubsystem::Get(GetWorld())->mFactoryBuildingGroupsDirty =true;
+			AFGBuildableSubsystem::Get(GetWorld())->mConveyorBucketGroupsDirty = true;
+		}
 	}
 	
 }
@@ -270,6 +275,14 @@ void AModularConnectionBuildable::SetupConveyor(UFGFactoryConnectionComponent * 
 {
 	Con->SetInventory(Inventory);
 	Con->mInventoryAccessIndex = IndexOverride;
+	if (Cast<AFGBuildable>(AttachedBuilding))
+	{
+		auto* i = Cast<AFGBuildable>(AttachedBuilding);
+		if (Con->mOuterBuildable != i)
+		{
+			Con->mOuterBuildable = Cast<AFGBuildable>(AttachedBuilding);
+		}
+	}
 	UE_LOG(LogTemp,Error,TEXT("SetInventory to : %s . Index %i"),*Con->GetName(), Con->mInventoryAccessIndex);
 	UModularConnectionBPLib::InsertConnectionOnBuilding(AttachedBuilding,Con,InventoryIndex);
 }
